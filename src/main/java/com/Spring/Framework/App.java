@@ -1,4 +1,4 @@
-package com.maven.SpringKickStart;
+package com.Spring.Framework;
 
 import com.Spring.Framework.config.ProductConfiguration;
 import com.Spring.Framework.data.Product;

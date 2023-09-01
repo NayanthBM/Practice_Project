@@ -22,7 +22,7 @@ public class ProductConfiguration {
         
         data.setDriverClassName("org.h2.Driver");
         data.setUrl(" jdbc:h2:mem:testdb");
-        data.setUser("nayan");
+        data.setUser("sa");
         data.setPassword("password");
         return data;
     }
