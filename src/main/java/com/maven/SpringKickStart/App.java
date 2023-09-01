@@ -16,7 +16,7 @@ public class App {
 
         System.out.println("There are "+product.count()+" Products");
         
-        System.out.println("Successfully completed");
+        System.out.println("Successfully");
 
         context.close();
     }
