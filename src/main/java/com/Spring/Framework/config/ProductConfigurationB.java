@@ -8,9 +8,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 @Configuration
 @PropertySource("classpath:database.properties")
-public class ProductConfiguration {
+public class ProductConfigurationB {
 
     @Value("${jdbc.driver}")
     private String driver;
@@ -21,22 +25,17 @@ public class ProductConfiguration {
     @Value("${jdbc.password}")
     private String password;
 
-	@Lazy
     @Bean
-    public DummyProduct dummy() {
-    	System.out.println("Calling dummy");
-        return new DummyProduct();
+    public Connection connection() throws ClassNotFoundException, SQLException {
+        Class.forName(driver);
+        return DriverManager.getConnection(url, user, password);
     }
-	@Lazy
+
     @Bean
-    public DataProduct data() {
-		
-        DataProduct data = new DataProduct();
-        
-        data.setDriverClassName(driver);
-        data.setUrl(url);
-        data.setUser(user);
-        data.setPassword(password);
-        return data;
+    public DataProduct dataProduct(Connection connection) {
+//        DataProduct data = new DataProduct();
+//        data.setConnectionA(connection);
+//        return data;
+        return new DataProduct();
     }
 }
